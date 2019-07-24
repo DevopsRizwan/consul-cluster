@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+  - name: "To Create an dynamic host file for ansible"
+    shell: echo "[consul_nodes]" > /etc/ansible/hosts;cat {{ lookup('env','STATE_FILE') }}/terraform.tfstate | grep -w "public_ip" | awk '{print $2}' | cut -d '"' -f 2 >> /etc/ansible/hosts
+

@@ -1,0 +1,33 @@
+---
+
+#site.yml:
+#- hosts: localhost
+#  tasks:
+#  - name: "To Create an dynamic host file for ansible"
+#    shell: echo "[consul_nodes]" > /etc/ansible/hosts;cat {{ lookup('env','STATE_FILE') }}/terraform.tfstate | grep -w "public_ip" | awk '{print $2}' | cut -d '"' -f 2 >> /etc/ansible/hosts
+    #- name: check   
+    #hosts: [consul_nodes]
+    #tasks:
+    #- name: "Try for ssh to activate"
+    #wait_for_connection:
+    # remote_user: ubuntu
+    #  become: yes
+    #  gather_facts: yes      
+    #  delay: 10
+    #  ansible_ssh_private_key_file: "{{ lookup('env','SSH_KEYDIR') }}"
+    #  timeout: 600
+    #- pause:
+    #  minutes: 6    
+               
+
+- name: Example play
+  hosts: [consul_nodes]
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+    
+  vars:
+    ansible_ssh_private_key_file: "{{ lookup('env','SSH_KEYDIR') }}"
+  roles:
+    - {role: consul}

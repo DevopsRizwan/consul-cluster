@@ -1,0 +1,108 @@
+---
+
+#- name: Wait 900 seconds, but only start checking after 30 seconds
+#  wait_for_connection:
+#    delay: 10
+#    timeout: 600
+
+#- name: gather facts
+#  setup:
+
+- name: Create Consul directory
+  file:
+    path: "{{consul_dir}}"
+    state: directory
+    owner: "{{consul_user}}"
+    group: "{{consul_user}}"
+  register: consul_directory
+
+- name: Create Consul lib directory
+  file:
+    path: "{{consul_lib}}"
+    state: directory
+    owner: "{{consul_user}}"
+    group: "{{consul_user}}"
+
+- name: Check consul version
+  shell: "consul version 2>&1 | grep {{consul_version}}"
+  failed_when: false
+  changed_when: false
+  register: consul_version_match
+
+- name: Download consul
+  get_url:
+    url: https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_amd64.zip
+    dest: /tmp/consul.zip
+
+- name: Unarchive Consul archive
+  unarchive:
+    src: /tmp/consul.zip
+    dest: "{{consul_dir}}/"
+    remote_src: yes    
+
+- name: Make Consul user be owner
+  file:
+    path: "{{consul_dir}}"
+    state: directory
+    owner: "{{consul_user}}"
+    group: "{{consul_user}}"
+    recurse: yes
+
+- name: Adding Consul command to user path
+  file:
+    src: "{{consul_dir}}/consul"
+    dest: /usr/local/bin/consul
+    state: link
+
+- name: Create directories for consul
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - "/etc/consul.d/scripts"
+    - "/var/consul"
+
+- name: Get consul keygen
+  shell: consul keygen
+  register: consul_kg
+
+- set_fact:
+    consul_keygen: "{{ hostvars[item]['consul_kg']['stdout'] }}"
+  with_items:
+    - "{{ groups['consul_nodes'] }}"
+
+- set_fact:
+    consul_nodes: inventory_hostname in groups['consul_nodes']
+
+- name: "creating body testConfig.json for"
+  template:
+    src: consulServiceHost.j2
+    dest: /etc/systemd/system/consul.service
+
+- name: "ninja"
+  template:  
+    src: consulConfigHost.j2
+    dest: /etc/consul.d/config.json
+- name: "create remote hostfile"
+  template:
+    src: remote_hosts.j2
+    dest: /etc/hosts
+
+- name: Restart system daemons
+  shell: |
+    systemctl daemon-reload
+    systemctl start consul
+    systemctl enable consul    
+  become: yes
+
+  #- name: Start service consul
+  #service:
+  #  name: consul
+  #become: yes
+
+- name: "check cluster status"
+  shell: consul members
+  register: cluster_list
+
+- debug:
+    var: cluster_list.stdout_lines

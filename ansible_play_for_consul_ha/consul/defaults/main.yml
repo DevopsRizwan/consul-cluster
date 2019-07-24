@@ -1,0 +1,4 @@
+consul_version: 1.5.2
+consul_dir: /opt/consul
+consul_lib: /var/lib/consul
+consul_user: ubuntu

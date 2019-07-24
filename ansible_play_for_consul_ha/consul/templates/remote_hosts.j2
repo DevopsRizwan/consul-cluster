@@ -1,0 +1,4 @@
+{% for host in groups['consul_nodes'] %}
+{{hostvars[host].ansible_default_ipv4.address}} {{hostvars[host].ansible_fqdn}} {{hostvars[host].ansible_hostname}}
+{% if not loop.last %}{% endif %}
+{% endfor %}
