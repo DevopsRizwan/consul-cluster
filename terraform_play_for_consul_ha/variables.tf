@@ -21,11 +21,6 @@ variable "region_ami" {
   }
 }
 
-
-
-
-
-
 variable "user" {
   type = "string"
   default = "ubuntu"
