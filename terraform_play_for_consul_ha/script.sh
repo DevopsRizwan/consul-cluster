@@ -7,4 +7,3 @@ until [[ -f /var/lib/cloud/instance/boot-finished ]]; do
   apt-get update
   apt-get -y install python
   apt-get -y install unzip
-  sleep 10
