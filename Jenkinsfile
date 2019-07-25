@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Terraform Script') {
             steps {
-                //sh 'cd  terraform_play_for_consul_ha;terraform init;terraform destroy -auto-approve'
-                sh 'pwd'
+                sh 'cd  terraform_play_for_consul_ha;terraform init;terraform destroy -auto-approve'
+                sh 'sleep 10'
                 sh 'echo ${WORKSPACE}'
             }
         }
