@@ -6,6 +6,8 @@ cd ${dir}/
 terraform init
 terraform apply -auto-approve
 
+sleep 90
+
 cd ../${dir_ansible}
 ansible-playbook -vvv create-file.yml -e WORKSPACE=${WORKSPACE}
 chmod 400 /var/lib/jenkins/workspace/testjob/terraform_play_for_consul_ha/master.pem
