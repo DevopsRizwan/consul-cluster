@@ -12,4 +12,4 @@ For provisioning i have choosen Hashicorp's Terraform, reason as it has a featur
 
 Below is the archtecture of above setup:-
 
-![Image][1]
+![Image][https://github.com/DevopsRizwan/consul-cluster/blob/master/consul.jpg]
