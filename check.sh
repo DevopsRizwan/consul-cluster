@@ -9,4 +9,4 @@ terraform apply -auto-approve
 cd ../${dir_ansible}
 ansible-playbook -vvv create-file.yml
 sleep 10
-ansible-playbook -vvvvv consul-configure.yml
+ansible-playbook -vvvv consul-configure.yml
