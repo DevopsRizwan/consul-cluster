@@ -38,7 +38,8 @@
   unarchive:
     src: /tmp/consul.zip
     dest: "{{consul_dir}}/"
-    remote_src: yes    
+    remote_src: yes
+    copy=no
 
 - name: Make Consul user be owner
   file:
