@@ -6,7 +6,7 @@ pipeline {
             steps {
                 //sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
                 sh 'pwd'
-                sh '${WORKSPACE}'
+                sh 'echo${WORKSPACE}'
             }
         }
         
