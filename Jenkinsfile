@@ -10,6 +10,7 @@ pipeline {
         
         stage('Ansible') {
             steps {
+                sh 'export ANSIBLE_HOST_KEY_CHECKING=False' 
                 sh ' ansible-playbook -vvv ansible_play_for_consul_ha/create-file.yml -e WORKSPACE=${WORKSPACE}'
                 sh 'sleep 10'
                 sh 'echo ${STATE_FILE}'
