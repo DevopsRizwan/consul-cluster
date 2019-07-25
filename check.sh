@@ -7,6 +7,6 @@ terraform init
 terraform apply -auto-approve
 
 cd ../${dir_ansible}
-ansible-playbook -vvv create-file.yml
+ansible-playbook -vvv create-file.yml -e WORKSPACE=${WORKSPACE}
 sleep 10
-ansible-playbook -vvvv consul-configure.yml
+ansible-playbook -vvvv consul-configure.yml -e WORKSPACE=${WORKSPACE}
