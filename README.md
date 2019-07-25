@@ -9,3 +9,7 @@
    -  Configuration of consul nodes to act and maintain HA of Consul servers.
    
 For provisioning i have choosen Hashicorp's Terraform, reason as it has a feature to maintain the state of your infrastructure. Similarly for configuration management i.e; for installation and configuration  of the Consul HA Ansible has several advantages over terraform.
+
+Below is the archtecture of above setup:-
+
+![Image][1]
