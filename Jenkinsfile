@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Terraform Script') {
             steps {
-                sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
+                //sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
+                sh 'pwd'
             }
         }
         
@@ -15,7 +16,7 @@ pipeline {
                 //sh 'sleep 10'
                 //sh 'echo ${STATE_FILE}'
                 //sh 'ansible-playbook -vvv ansible_play_for_consul_ha/consul-configure.yml -e WORKSPACE=${WORKSPACE}'
-                sh 'check.sh'
+                sh 'sh check.sh'
             }
         }
 
