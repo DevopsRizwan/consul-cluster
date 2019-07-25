@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Terraform Script') {
             steps {
-                sh ' terraform terraform_play_for_consul_ha/main.tf'
+                sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
             }
         }
         
         stage('Ansible') {
             steps {
-                sh ' terraform ansible_play_for_consul_ha/create_file.yml'
+                sh ' ansible-playbook ansible_play_for_consul_ha/create_file.yml'
             }
         }
 
