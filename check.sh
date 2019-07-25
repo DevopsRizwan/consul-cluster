@@ -8,6 +8,6 @@ terraform apply -auto-approve
 
 cd ../${dir_ansible}
 ansible-playbook -vvv create-file.yml -e WORKSPACE=${WORKSPACE}
-chmod 600 /var/lib/jenkins/workspace/testjob/terraform_play_for_consul_ha/master.pem
+chmod 400 /var/lib/jenkins/workspace/testjob/terraform_play_for_consul_ha/master.pem
 sleep 10
 ansible-playbook -vvvv consul-configure.yml -e WORKSPACE=${WORKSPACE}
