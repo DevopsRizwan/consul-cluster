@@ -17,9 +17,9 @@ pipeline {
                 //sh 'sleep 10'
                 //sh 'echo ${STATE_FILE}'
                 //sh 'ansible-playbook -vvv ansible_play_for_consul_ha/consul-configure.yml -e WORKSPACE=${WORKSPACE}'
-                sh 'echo rizwan'
+                //sh 'echo rizwan'
                 //sh 'chmod + x check.sh'
-                sh 'sh check.sh'
+                //sh 'sh check.sh'
             }
         }
 
