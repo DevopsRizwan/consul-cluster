@@ -1,13 +1,5 @@
 ---
 
-#- name: Wait 900 seconds, but only start checking after 30 seconds
-#  wait_for_connection:
-#    delay: 10
-#    timeout: 600
-
-#- name: gather facts
-#  setup:
-
 - name: Create Consul directory
   file:
     path: "{{consul_dir}}"
@@ -75,16 +67,17 @@
 - set_fact:
     consul_nodes: inventory_hostname in groups['consul_nodes']
 
-- name: "creating body testConfig.json for"
+- name: "Create a consul service file from template"
   template:
     src: consulServiceHost.j2
     dest: /etc/systemd/system/consul.service
 
-- name: "ninja"
+- name: "Create a HA configuration file for Consul  "
   template:  
     src: consulConfigHost.j2
     dest: /etc/consul.d/config.json
-- name: "create remote hostfile"
+    
+- name: "create remote hostfile to resolve host dns names"
   template:
     src: remote_hosts.j2
     dest: /etc/hosts
@@ -95,11 +88,6 @@
     systemctl start consul
     systemctl enable consul    
   become: yes
-
-  #- name: Start service consul
-  #service:
-  #  name: consul
-  #become: yes
 
 - name: "check cluster status"
   shell: consul members
