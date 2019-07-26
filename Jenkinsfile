@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Terraform Script') {
             steps {
-                sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve' 30
+                sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
                 sh 'sleep 30'
             }
         }
