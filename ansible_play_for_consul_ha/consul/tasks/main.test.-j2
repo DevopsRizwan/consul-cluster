@@ -1,5 +1,0 @@
----
-- name: "/etc/hosts"
-  template:  
-    src: remote_hosts.j2
-    dest: /etc/hosts-remote
