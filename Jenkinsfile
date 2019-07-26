@@ -15,7 +15,7 @@ pipeline {
                 sh ' ansible-playbook -vvv ansible_play_for_consul_ha/create-file.yml -e WORKSPACE=${WORKSPACE}'
                 //sh 'sleep 10'
                 //sh 'echo ${STATE_FILE}'
-                sh 'chmod 400 terraform_play_for_consul_ha/master.pem'
+                sh 'chmod 400 ${SSH_KEYDIR}'
                 sh 'ansible-playbook -vvv ansible_play_for_consul_ha/consul-configure.yml -e WORKSPACE=${WORKSPACE}'
                 //sh 'echo rizwan'
                 //sh 'chmod + x check.sh'
