@@ -28,9 +28,9 @@ For provisioning i have choosen Hashicorp's Terraform, reason as it has a featur
 - Change of service file in case of DNS server change.
 - Timely replacement of SSH key files for security.
 
-## Cost involvement:-
+## Cost Involvement:-
 
-Total const depends on the configuration of ec2 instance. Here, i have used t2-micro instances, each costs aprroximately USD $10. Apart from that you require DNS hosted zone in AWS,and Route-53 costs around USD $.5, VPC hosting has pricing as per the traffic. To sum up the approximate billing for 3 node set up of 3-micro instances will be around USD $50 per mont. 
+Total cost depends on the configuration of ec2 instances. Here, i have used t2-micro instances, each costs aprroximately USD $10. Apart from that you require DNS hosted zone in AWS,and Route-53 costs around USD $.5, VPC hosting has pricing as per the traffic. To sum up the approximate billing for 3 node set up of 3-micro instances will be around USD $50 per mont. 
 All tools that we are using here i.e; Ansible, Terraform and Jenkins are opensource tools. Hence doesn't involve any cost in HA setup.
 
 P.S. Cost estimation is based on the rough calcultion, actual may vary.
