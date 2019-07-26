@@ -19,3 +19,12 @@ For provisioning i have choosen Hashicorp's Terraform, reason as it has a featur
 
  End Result of Consul-HA
                   ![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/consul-ha.PNG)
+
+
+## Ongoing Maintainance Tasks:-
+
+
+- Renewal of AWS authentication keys.
+- Enhancement  and change in infrastructure, when the load increases.
+- Change of service file in case of DNS server change.
+- Timely replacement of SSH key files for security.
