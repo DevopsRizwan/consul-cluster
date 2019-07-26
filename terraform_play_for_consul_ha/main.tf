@@ -19,11 +19,13 @@ resource "aws_instance" "ha" {
       Name = "${var.availability_zone[count.index]}Server"
     }
 
+# Provision the vms with unzip and python for ansible installed
 provisioner "file" {
 source="./${var.provision_file}"
 destination="/tmp/${var.provision_file}"
 }
 
+# Execute the script file on each node after system boot
 provisioner "remote-exec" {
 inline=[
 "chmod +x /tmp/${var.provision_file}",
