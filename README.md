@@ -10,14 +10,14 @@
    
 For provisioning i have choosen Hashicorp's Terraform, reason as it has a feature to maintain the state of your infrastructure. Similarly for configuration management i.e; for installation and configuration  of the Consul HA Ansible has several advantages over terraform.
 
-## Architecture of above setup:-
-                                         ![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/consul.jpg)
+ ## Architecture of above setup:-
+ ![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/consul.jpg)
 
-## Final output of ansible Playbooks                  
-                  ![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/ansible-output.PNG)
+## Final output of ansible Playbooks:
+![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/ansible-output.PNG)
 
 ## End Result of Consul-HA
-                  ![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/consul-ha.PNG)
+![Image](https://github.com/DevopsRizwan/consul-cluster/blob/master/consul-ha.PNG)
 
 
 ## Ongoing Maintainance Tasks:-
