@@ -33,10 +33,10 @@ variable "provision_file" {
 
 variable "private_key" {
   type = "string"
-  default = "master.pem"
+  default = "/tmp/master.pem"
 }
 
 variable "public_key" {
   type = "string"
-  default = "/tmp/master.pem.pub"
+  default = "master.pem.pub"
 }
