@@ -33,7 +33,7 @@ variable "provision_file" {
 
 variable "private_key" {
   type = "string"
-  default = "/var/lib/jenkins/master.pem"
+  default = "master.pem"
 }
 
 variable "public_key" {
