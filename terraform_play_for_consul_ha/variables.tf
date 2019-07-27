@@ -33,7 +33,7 @@ variable "provision_file" {
 
 variable "private_key" {
   type = "string"
-  default = "/tmp/master.pem"
+  default = "/var/lib/master.pem"
 }
 
 variable "public_key" {
