@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Provision the Terraform Script') {
             steps {
-                sh 'ls -la /var/lib'
+                sh 'mv  /var/lib/master.pem ${WORKSPACE}'
                 sh 'cd  terraform_play_for_consul_ha;terraform init;terraform apply -auto-approve'
                 sh 'sleep 30'
             }
