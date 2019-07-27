@@ -38,5 +38,5 @@ variable "private_key" {
 
 variable "public_key" {
   type = "string"
-  default = "master.pem.pub"
+  default = "/tmp/master.pem.pub"
 }
